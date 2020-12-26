@@ -27,7 +27,7 @@ class Settings:
                 writer.writerow(single_stock)
 
     def csv_writer2(self, dfilename, stock_data):
-        header = ['stock_number', 'open_price', 'high_price', 'low_price', 'dividend_yield', 'share_unit_number', 'per', 'psr', 'pbr', 'volume', 'market_capitalization', 'number_os_issued_shares', 'stockholder', 'preferential_yield', 'diviidend_yield', 'minumum_stock', 'vesting_month', 'vesting_day']
+        header = ['stock_number', 'open_price', 'high_price', 'low_price', 'dividend_yield', 'share_unit_number', 'per', 'psr', 'pbr', 'volume', 'market_capitalization', 'number_os_issued_shares', 'stockholder', 'preferential_yield', 'diviidend_yield', 'total_yield','minumum_stock', 'vesting_month', 'vesting_day']
         with open(dfilename, 'w', newline='') as f:
             writer = csv.writer(f, lineterminator='\n')
             writer.writerow(header)

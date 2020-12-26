@@ -27,14 +27,26 @@ class DetailedInfomation():
                     stock = self.stock_holder(base_url, stock)
             stock_data.append(stock)
             stock = []
-            print(f'{stock_number}finished.')
+            # print(f'{stock_number}finished.')
         self.setting.csv_writer2(dfilename, stock_data)
 
     def stock_holder(self, base_url, stock):
+        total = 0.0
         url = f'{base_url}yutai'
         html = self.setting.bs_settings(url)
         td = html.find_all('td', class_='tar')
-        for ydata in td[1:6]:
+        for ydata in td[1:3]:
+            ydata = ydata.get_text().replace('\n', '')
+            stock.append(ydata)
+
+            try:
+                total += float(ydata[:-1])
+            except ValueError:
+                pass
+
+        stock.append(f'{total:.2f}%')
+        print(f'{total:.2f}%')
+        for ydata in td[4:6]:
             ydata = ydata.get_text().replace('\n', '')
             stock.append(ydata)
 
